@@ -1,0 +1,187 @@
+{
+  "schema": "iteryx/java-grader/v1",
+
+  "assignmentName": "Ch. 3 Challenge 4",
+
+  "project": {
+    "workingDirectory": ".",
+    "mainFile": "src/AstronautScoring.java",
+    "mainClass": "AstronautScoring",
+    "outputDirectory": ".iteryx/out",
+    "compileCommand": [
+      "javac",
+      "-d",
+      ".iteryx/out",
+      "src/AstronautScoring.java"
+    ],
+    "runCommand": [
+      "java",
+      "-cp",
+      ".iteryx/out",
+      "AstronautScoring"
+    ]
+  },
+
+  "settings": {
+    "compileTimeoutSeconds": 30,
+    "runTimeoutSeconds": 10,
+    "defaultCaseSensitive": false,
+    "defaultNormalizeWhitespace": true
+  },
+
+  "helpTopics": {
+    "scanner": {
+      "title": "Scanner Input",
+      "whereToLook": [
+        "Make sure you created one Scanner object using System.in before you try to read any input.",
+        "Each prompt must be printed before you call the matching Scanner read method.",
+        "Use nextLine() for names and either nextInt() or Integer.parseInt(scanner.nextLine()) for scores, and be consistent about which one you pick."
+      ]
+    },
+    "conditionals": {
+      "title": "Comparing the Three Scores",
+      "whereToLook": [
+        "You need to compare all three scores against each other, not just the first two.",
+        "Use if / else if / else statements to figure out which astronaut has the highest, second highest, and third highest score.",
+        "Test your logic with the highest score in each of the three input positions, not just the first one."
+      ]
+    },
+    "output": {
+      "title": "Displaying the Results",
+      "whereToLook": [
+        "Print the results using the exact wording shown in the README: \"Highest score: \", \"Second highest score: \", and \"Third highest score: \".",
+        "Use the name variables you stored from input in your output. Do not type an astronaut's name directly into the print statement.",
+        "Print the three result lines after you have read and compared all three astronauts, not in between."
+      ]
+    }
+  },
+
+  "sourceChecks": [
+    {
+      "name": "Uses Scanner",
+      "type": "regex",
+      "pattern": "\\bScanner\\b",
+      "points": 1,
+      "message": "This challenge requires you to use a Scanner to read the astronaut names and scores from the keyboard."
+    },
+    {
+      "name": "Uses a conditional statement",
+      "type": "regex",
+      "pattern": "\\bif\\s*\\(",
+      "points": 1,
+      "message": "This challenge requires you to use if statements to compare the three scores and determine the ranking."
+    },
+    {
+      "name": "Prompts for first astronaut's name",
+      "type": "contains",
+      "pattern": "Enter the first astronaut's name: ",
+      "points": 1,
+      "message": "Your program is missing (or has changed the wording of) the prompt \"Enter the first astronaut's name: \"."
+    },
+    {
+      "name": "Prompts for first astronaut's score",
+      "type": "contains",
+      "pattern": "Enter the first astronaut's score: ",
+      "points": 1,
+      "message": "Your program is missing (or has changed the wording of) the prompt \"Enter the first astronaut's score: \"."
+    },
+    {
+      "name": "Prompts for second astronaut's name",
+      "type": "contains",
+      "pattern": "Enter the second astronaut's name: ",
+      "points": 1,
+      "message": "Your program is missing (or has changed the wording of) the prompt \"Enter the second astronaut's name: \"."
+    },
+    {
+      "name": "Prompts for second astronaut's score",
+      "type": "contains",
+      "pattern": "Enter the second astronaut's score: ",
+      "points": 1,
+      "message": "Your program is missing (or has changed the wording of) the prompt \"Enter the second astronaut's score: \"."
+    },
+    {
+      "name": "Prompts for third astronaut's name",
+      "type": "contains",
+      "pattern": "Enter the third astronaut's name: ",
+      "points": 1,
+      "message": "Your program is missing (or has changed the wording of) the prompt \"Enter the third astronaut's name: \"."
+    },
+    {
+      "name": "Prompts for third astronaut's score",
+      "type": "contains",
+      "pattern": "Enter the third astronaut's score: ",
+      "points": 1,
+      "message": "Your program is missing (or has changed the wording of) the prompt \"Enter the third astronaut's score: \"."
+    }
+  ],
+
+  "tests": [
+    {
+      "name": "Ranking when entered in order (highest to lowest)",
+      "input": "Alice\n90\nBen\n80\nCara\n70\n",
+      "expectedOutput": "Highest score: Alice\nSecond highest score: Ben\nThird highest score: Cara",
+      "comparison": "included",
+      "points": 4,
+      "possibleErrors": [
+        {
+          "type": "no_output",
+          "message": "Your program did not print any results. Make sure your program reads all three astronauts before it displays the ranking."
+        },
+        {
+          "type": "hardcoded_output_hint",
+          "badText": "Kai",
+          "message": "Your output contains a name from the README example instead of the name that was actually entered. Make sure you are printing the variables you stored from input."
+        }
+      ]
+    },
+    {
+      "name": "Ranking when entered in reverse order (lowest to highest)",
+      "input": "Dax\n60\nElin\n75\nFox\n88\n",
+      "expectedOutput": "Highest score: Fox\nSecond highest score: Elin\nThird highest score: Dax",
+      "comparison": "included",
+      "points": 4,
+      "possibleErrors": [
+        {
+          "type": "expected_missing",
+          "message": "Your ranking is incorrect when the highest score is entered last. Make sure your comparisons check the score entered for every astronaut, not just the first one."
+        },
+        {
+          "type": "hardcoded_output_hint",
+          "badText": "Nova",
+          "message": "Your output contains a name from the README example instead of the name that was actually entered. Make sure you are printing the variables you stored from input."
+        }
+      ]
+    },
+    {
+      "name": "Ranking when the highest score is entered second",
+      "input": "Gus\n82\nHana\n95\nIvy\n40\n",
+      "expectedOutput": "Highest score: Hana\nSecond highest score: Gus\nThird highest score: Ivy",
+      "comparison": "included",
+      "points": 4,
+      "possibleErrors": [
+        {
+          "type": "expected_missing",
+          "message": "Your ranking is incorrect when the highest score is entered second. Check that your if statements compare all three scores against each other."
+        }
+      ]
+    },
+    {
+      "name": "Ranking when the second-highest score is entered third",
+      "input": "Jett\n91\nKira\n55\nLeo\n70\n",
+      "expectedOutput": "Highest score: Jett\nSecond highest score: Leo\nThird highest score: Kira",
+      "comparison": "included",
+      "points": 5,
+      "possibleErrors": [
+        {
+          "type": "expected_missing",
+          "message": "Your ranking is incorrect when the second highest score is entered last. Check that your if statements compare all three scores against each other, not just consecutive pairs."
+        },
+        {
+          "type": "hardcoded_output_hint",
+          "badText": "Zara",
+          "message": "Your output contains a name from the README example instead of the name that was actually entered. Make sure you are printing the variables you stored from input."
+        }
+      ]
+    }
+  ]
+}
