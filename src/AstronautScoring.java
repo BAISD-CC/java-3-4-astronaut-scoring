@@ -13,6 +13,7 @@ public class AstronautScoring {
 
 
         // Get the second astronaut's name and score.
+        // (Reading a name after a number? Remember the leftover newline.)
 
 
         // Get the third astronaut's name and score.
@@ -21,10 +22,11 @@ public class AstronautScoring {
         // Close the keyboard scanner.
 
 
-        // Compare the three scores to figure out the ranking order.
+        // If any score is outside 0 to 100, display the invalid message.
 
 
-        // Display the astronaut names from highest score to lowest score.
+        // Otherwise, compare the three scores to figure out the ranking order,
+        // display the names from highest to lowest, and display the crew average.
 
     }
 
