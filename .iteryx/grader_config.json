@@ -1,8 +1,6 @@
 {
   "schema": "iteryx/java-grader/v1",
-
   "assignmentName": "Ch. 3 Challenge 4",
-
   "project": {
     "workingDirectory": ".",
     "mainFile": "src/AstronautScoring.java",
@@ -21,21 +19,19 @@
       "AstronautScoring"
     ]
   },
-
   "settings": {
     "compileTimeoutSeconds": 30,
     "runTimeoutSeconds": 10,
     "defaultCaseSensitive": false,
     "defaultNormalizeWhitespace": true
   },
-
   "helpTopics": {
     "scanner": {
       "title": "Scanner Input",
       "whereToLook": [
         "Make sure you created one Scanner object using System.in before you try to read any input.",
         "Each prompt must be printed before you call the matching Scanner read method.",
-        "Use nextLine() for names and either nextInt() or Integer.parseInt(scanner.nextLine()) for scores, and be consistent about which one you pick."
+        "Use nextLine() for names and nextInt() for scores. After nextInt(), call nextLine() once to throw away the leftover newline before reading the next name."
       ]
     },
     "conditionals": {
@@ -53,69 +49,73 @@
         "Use the name variables you stored from input in your output. Do not type an astronaut's name directly into the print statement.",
         "Print the three result lines after you have read and compared all three astronauts, not in between."
       ]
+    },
+    "validation": {
+      "title": "Checking the Scores",
+      "whereToLook": [
+        "Read all six inputs first, then check the scores.",
+        "A score is invalid if it is below 0 or above 100; || lets one condition check both sides.",
+        "If any score is invalid, print only the invalid message: no ranking and no average."
+      ]
+    },
+    "average": {
+      "title": "Crew Average",
+      "whereToLook": [
+        "Add the three scores and divide by 3.0, not 3, so the result keeps its decimals.",
+        "Display the average with printf and %.2f.",
+        "Print the average after the three ranking lines."
+      ]
     }
   },
-
-  "sourceChecks": [
+  "tests": [
     {
-      "name": "Uses Scanner",
-      "type": "regex",
-      "pattern": "\\bScanner\\b",
-      "points": 1,
-      "message": "This challenge requires you to use a Scanner to read the astronaut names and scores from the keyboard."
-    },
-    {
-      "name": "Uses a conditional statement",
-      "type": "regex",
-      "pattern": "\\bif\\s*\\(",
-      "points": 1,
-      "message": "This challenge requires you to use if statements to compare the three scores and determine the ranking."
-    },
-    {
-      "name": "Prompts for first astronaut's name",
-      "type": "contains",
-      "pattern": "Enter the first astronaut's name: ",
+      "name": "Displays prompt: Enter the first astronaut's name:",
+      "input": "Alice\n90\nBen\n80\nCara\n70\n",
+      "expectedOutput": "Enter the first astronaut's name:",
+      "comparison": "included",
       "points": 1,
       "message": "Your program is missing (or has changed the wording of) the prompt \"Enter the first astronaut's name: \"."
     },
     {
-      "name": "Prompts for first astronaut's score",
-      "type": "contains",
-      "pattern": "Enter the first astronaut's score: ",
+      "name": "Displays prompt: Enter the first astronaut's score:",
+      "input": "Alice\n90\nBen\n80\nCara\n70\n",
+      "expectedOutput": "Enter the first astronaut's score:",
+      "comparison": "included",
       "points": 1,
       "message": "Your program is missing (or has changed the wording of) the prompt \"Enter the first astronaut's score: \"."
     },
     {
-      "name": "Prompts for second astronaut's name",
-      "type": "contains",
-      "pattern": "Enter the second astronaut's name: ",
+      "name": "Displays prompt: Enter the second astronaut's name:",
+      "input": "Alice\n90\nBen\n80\nCara\n70\n",
+      "expectedOutput": "Enter the second astronaut's name:",
+      "comparison": "included",
       "points": 1,
       "message": "Your program is missing (or has changed the wording of) the prompt \"Enter the second astronaut's name: \"."
     },
     {
-      "name": "Prompts for second astronaut's score",
-      "type": "contains",
-      "pattern": "Enter the second astronaut's score: ",
+      "name": "Displays prompt: Enter the second astronaut's score:",
+      "input": "Alice\n90\nBen\n80\nCara\n70\n",
+      "expectedOutput": "Enter the second astronaut's score:",
+      "comparison": "included",
       "points": 1,
       "message": "Your program is missing (or has changed the wording of) the prompt \"Enter the second astronaut's score: \"."
     },
     {
-      "name": "Prompts for third astronaut's name",
-      "type": "contains",
-      "pattern": "Enter the third astronaut's name: ",
+      "name": "Displays prompt: Enter the third astronaut's name:",
+      "input": "Alice\n90\nBen\n80\nCara\n70\n",
+      "expectedOutput": "Enter the third astronaut's name:",
+      "comparison": "included",
       "points": 1,
       "message": "Your program is missing (or has changed the wording of) the prompt \"Enter the third astronaut's name: \"."
     },
     {
-      "name": "Prompts for third astronaut's score",
-      "type": "contains",
-      "pattern": "Enter the third astronaut's score: ",
+      "name": "Displays prompt: Enter the third astronaut's score:",
+      "input": "Alice\n90\nBen\n80\nCara\n70\n",
+      "expectedOutput": "Enter the third astronaut's score:",
+      "comparison": "included",
       "points": 1,
       "message": "Your program is missing (or has changed the wording of) the prompt \"Enter the third astronaut's score: \"."
-    }
-  ],
-
-  "tests": [
+    },
     {
       "name": "Ranking when entered in order (highest to lowest)",
       "input": "Alice\n90\nBen\n80\nCara\n70\n",
@@ -180,6 +180,82 @@
           "type": "hardcoded_output_hint",
           "badText": "Zara",
           "message": "Your output contains a name from the README example instead of the name that was actually entered. Make sure you are printing the variables you stored from input."
+        }
+      ]
+    },
+    {
+      "name": "Crew average 80.00",
+      "input": "Alice\n90\nBen\n80\nCara\n70\n",
+      "expectedOutput": "Crew average: 80.00",
+      "comparison": "included",
+      "points": 2,
+      "message": "The crew average for these scores is 80.00. Add the three scores, divide by 3.0, and display it with %.2f."
+    },
+    {
+      "name": "Crew average 74.33",
+      "input": "Dax\n60\nElin\n75\nFox\n88\n",
+      "expectedOutput": "Crew average: 74.33",
+      "comparison": "included",
+      "points": 2,
+      "message": "The crew average for these scores is 74.33. Add the three scores, divide by 3.0, and display it with %.2f.",
+      "possibleErrors": [
+        {
+          "type": "hardcoded_output_hint",
+          "badText": "Crew average: 74.00",
+          "message": "Your average shows 74.00 instead of 74.33. Dividing by 3 uses integer division; divide by 3.0 instead."
+        }
+      ]
+    },
+    {
+      "name": "Crew average 72.33",
+      "input": "Gus\n82\nHana\n95\nIvy\n40\n",
+      "expectedOutput": "Crew average: 72.33",
+      "comparison": "included",
+      "points": 2,
+      "message": "The crew average for these scores is 72.33. Add the three scores, divide by 3.0, and display it with %.2f.",
+      "possibleErrors": [
+        {
+          "type": "hardcoded_output_hint",
+          "badText": "Crew average: 72.00",
+          "message": "Your average shows 72.00 instead of 72.33. Dividing by 3 uses integer division; divide by 3.0 instead."
+        }
+      ]
+    },
+    {
+      "name": "Crew average 72.00",
+      "input": "Jett\n91\nKira\n55\nLeo\n70\n",
+      "expectedOutput": "Crew average: 72.00",
+      "comparison": "included",
+      "points": 2,
+      "message": "The crew average for these scores is 72.00. Add the three scores, divide by 3.0, and display it with %.2f."
+    },
+    {
+      "name": "Rejects a score above 100",
+      "input": "Nova\n88\nKai\n105\nZara\n72\n",
+      "expectedOutput": "Invalid score. Scores must be from 0 to 100.",
+      "comparison": "included",
+      "points": 3,
+      "message": "A score above 100 is invalid. Print \"Invalid score. Scores must be from 0 to 100.\"",
+      "possibleErrors": [
+        {
+          "type": "hardcoded_output_hint",
+          "badText": "Highest score:",
+          "message": "Your program printed a ranking even though a score was invalid. When any score is outside 0 to 100, print only the invalid message."
+        }
+      ]
+    },
+    {
+      "name": "Rejects a negative score",
+      "input": "Nova\n88\nKai\n95\nZara\n-5\n",
+      "expectedOutput": "Invalid score. Scores must be from 0 to 100.",
+      "comparison": "included",
+      "points": 3,
+      "message": "A score below 0 is invalid, including the third score. Check all three scores.",
+      "possibleErrors": [
+        {
+          "type": "hardcoded_output_hint",
+          "badText": "Highest score:",
+          "message": "Your program printed a ranking even though a score was invalid. When any score is outside 0 to 100, print only the invalid message."
         }
       ]
     }
